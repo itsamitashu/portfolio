@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Amit Kumar — Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+<style>
+
+:root{
+  --bg:#050508;
+  --surface:rgba(255,255,255,0.04);
+  --surface-hover:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.08);
+  --border-glow:rgba(120,180,255,0.35);
+
+  --text:#f0f0f5;
+  --muted:rgba(240,240,245,0.55);
+
+  --accent:#4f8eff;
+  --accent2:#a78bfa;
+  --accent3:#34d399;
+  --neon:#7dd3fc;
+
+  --font-display:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+/* BACKGROUND */
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+
+  background-image:
+  radial-gradient(circle at 20% 20%, rgba(79,142,255,0.12), transparent 20%),
+  radial-gradient(circle at 80% 30%, rgba(167,139,250,0.10), transparent 20%),
+  radial-gradient(circle at 50% 80%, rgba(52,211,153,0.08), transparent 20%);
+
+  z-index:-2;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+
+  z-index:999;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:1.2rem 5vw;
+
+  background:rgba(5,5,8,0.7);
+  backdrop-filter:blur(20px);
+
+  border-bottom:1px solid var(--border);
+}
+
+.nav-logo{
+  font-family:var(--font-display);
+  font-size:1.3rem;
+  font-weight:800;
+
+  background:linear-gradient(135deg,#fff,var(--neon));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+  display:flex;
+  gap:2rem;
+  list-style:none;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--muted);
+
+  font-size:0.9rem;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:var(--text);
+}
+
+/* SECTION */
+
+section{
+  max-width:1200px;
+  margin:auto;
+
+  padding:7rem 5vw;
+}
+
+.section-tag{
+  display:inline-flex;
+  align-items:center;
+
+  padding:0.4rem 1rem;
+
+  border-radius:50px;
+
+  border:1px solid rgba(79,142,255,0.25);
+
+  background:rgba(79,142,255,0.08);
+
+  color:var(--accent);
+
+  font-size:0.75rem;
+  font-weight:700;
+
+  margin-bottom:1.3rem;
+}
+
+.section-title{
+  font-family:var(--font-display);
+
+  font-size:clamp(2rem,5vw,3.5rem);
+
+  line-height:1.1;
+
+  margin-bottom:2rem;
+}
+
+/* HERO */
+
+#hero{
+  min-height:100vh;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.hero-eyebrow{
+  color:var(--accent3);
+
+  font-size:0.85rem;
+  font-weight:700;
+
+  margin-bottom:1.5rem;
+}
+
+.hero-name{
+  font-family:var(--font-display);
+
+  font-size:clamp(3rem,8vw,6rem);
+
+  line-height:1;
+
+  margin-bottom:1.5rem;
+}
+
+.highlight{
+  background:linear-gradient(135deg,var(--neon),var(--accent2),var(--accent));
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero-tagline{
+  max-width:650px;
+
+  color:var(--muted);
+
+  font-size:1.1rem;
+
+  margin-bottom:2.5rem;
+}
+
+.hero-cta{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.btn-primary,
+.btn-secondary{
+  padding:0.9rem 2rem;
+
+  border-radius:50px;
+
+  text-decoration:none;
+
+  transition:0.3s;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+}
+
+.btn-secondary{
+  border:1px solid var(--border);
+  color:var(--text);
+}
+
+.btn-secondary:hover{
+  border-color:var(--border-glow);
+}
+
+/* GLASS */
+
+.glass{
+  background:var(--surface);
+
+  border:1px solid var(--border);
+
+  border-radius:22px;
+
+  backdrop-filter:blur(18px);
+
+  transition:0.3s;
+}
+
+.glass:hover{
+  transform:translateY(-5px);
+
+  background:var(--surface-hover);
+
+  border-color:var(--border-glow);
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+  align-items:center;
+}
+
+.about-card{
+  padding:2.5rem;
+}
+
+.about-text{
+  color:var(--muted);
+
+  margin-bottom:1.5rem;
+}
+
+.about-stats{
+  display:flex;
+  gap:2rem;
+  flex-wrap:wrap;
+}
+
+.stat-number{
+  font-size:2rem;
+  font-family:var(--font-display);
+  font-weight:800;
+
+  background:linear-gradient(135deg,var(--neon),var(--accent));
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:0.8rem;
+}
+
+.avatar-ring{
+  width:260px;
+  height:260px;
+
+  border-radius:50%;
+
+  margin:auto;
+
+  border:2px solid transparent;
+
+  background:
+  linear-gradient(var(--bg),var(--bg)) padding-box,
+  linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3)) border-box;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.avatar-inner{
+  width:230px;
+  height:230px;
+
+  border-radius:50%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:4rem;
+  font-family:var(--font-display);
+  font-weight:800;
+
+  background:linear-gradient(135deg,var(--neon),var(--accent2));
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* SKILLS */
+
+.skills-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+}
+
+.skill-pill{
+  padding:0.8rem 1.4rem;
+
+  border-radius:50px;
+
+  background:var(--surface);
+
+  border:1px solid var(--border);
+
+  transition:0.3s;
+}
+
+.skill-pill:hover{
+  transform:translateY(-3px);
+
+  border-color:var(--border-glow);
+}
+
+/* PROJECTS */
+
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:1.5rem;
+}
+
+.project-card{
+  padding:2rem;
+}
+
+.project-number{
+  font-size:3rem;
+  font-family:var(--font-display);
+  font-weight:800;
+
+  color:rgba(255,255,255,0.05);
+
+  margin-bottom:1rem;
+}
+
+.project-label{
+  color:var(--accent);
+
+  font-size:0.75rem;
+  font-weight:700;
+
+  margin-bottom:0.7rem;
+}
+
+.project-title{
+  font-family:var(--font-display);
+
+  font-size:1.5rem;
+
+  margin-bottom:1rem;
+}
+
+.project-desc{
+  color:var(--muted);
+
+  margin-bottom:1.5rem;
+}
+
+.project-tags{
+  display:flex;
+  gap:0.5rem;
+  flex-wrap:wrap;
+
+  margin-bottom:1.5rem;
+}
+
+.tag{
+  padding:0.35rem 0.8rem;
+
+  border-radius:50px;
+
+  font-size:0.75rem;
+  font-weight:700;
+}
+
+.tag-blue{
+  background:rgba(79,142,255,0.12);
+  color:var(--accent);
+}
+
+.tag-purple{
+  background:rgba(167,139,250,0.12);
+  color:var(--accent2);
+}
+
+.tag-green{
+  background:rgba(52,211,153,0.12);
+  color:var(--accent3);
+}
+
+.project-link{
+  text-decoration:none;
+
+  color:var(--accent);
+
+  font-weight:700;
+}
+
+/* CONTACT */
+
+#contact{
+  text-align:center;
+}
+
+.contact-card{
+  max-width:700px;
+  margin:auto;
+
+  padding:3rem;
+}
+
+.contact-text{
+  color:var(--muted);
+
+  margin-bottom:2rem;
+}
+
+.contact-email{
+  display:inline-block;
+
+  margin-bottom:2rem;
+
+  font-size:1.4rem;
+  font-family:var(--font-display);
+  font-weight:700;
+
+  text-decoration:none;
+
+  background:linear-gradient(135deg,var(--neon),var(--accent2));
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.social-links{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.social-link{
+  text-decoration:none;
+
+  color:var(--text);
+
+  padding:0.8rem 1.5rem;
+
+  border-radius:50px;
+
+  background:var(--surface);
+
+  border:1px solid var(--border);
+
+  transition:0.3s;
+}
+
+.social-link:hover{
+  transform:translateY(-3px);
+
+  border-color:var(--border-glow);
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+
+  padding:2rem;
+
+  border-top:1px solid var(--border);
+
+  color:var(--muted);
+
+  font-size:0.85rem;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .projects-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+
+  <div class="nav-logo">
+    AK.
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+
+  <div class="hero-eyebrow">
+    Available for opportunities
+  </div>
+
+  <h1 class="hero-name">
+    Amit Kumar<br>
+
+  </h1>
+
+  <p class="hero-tagline">
+    Full Stack MERN Developer · AWS & Cloud Enthusiast · AI/ML Builder · Graphic Designer
+  </p>
+
+  <div class="hero-cta">
+
+    <a href="#projects" class="btn-primary">
+      View My Work
+    </a>
+
+    <a href="#contact" class="btn-secondary">
+      Get in Touch
+    </a>
+
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="section-tag">
+    About Me
+  </div>
+
+  <h2 class="section-title">
+    Building with curiosity & code.
+  </h2>
+
+  <div class="about-grid">
+
+    <div class="about-card glass">
+
+      <p class="about-text">
+        I'm a passionate B.Tech student driven by technology,
+        creativity, and problem solving.
+      </p>
+
+      <p class="about-text">
+        I enjoy building modern web applications, AI/ML projects,
+        and cloud-based solutions while continuously learning
+        new technologies.
+      </p>
+
+      <div class="about-stats">
+
+        <div>
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+
+        <div>
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+
+        <div>
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Learning</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="avatar-ring">
+      <div class="avatar-inner">
+        AK
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+  <div class="section-tag">
+    Tech Stack
+  </div>
+
+  <h2 class="section-title">
+    Tools I work with.
+  </h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-pill">C++</div>
+    <div class="skill-pill">Python</div>
+    <div class="skill-pill">HTML</div>
+    <div class="skill-pill">CSS</div>
+    <div class="skill-pill">JavaScript</div>
+    <div class="skill-pill">React.js</div>
+    <div class="skill-pill">Node.js</div>
+    <div class="skill-pill">Express.js</div>
+    <div class="skill-pill">MongoDB</div>
+    <div class="skill-pill">AWS</div>
+    <div class="skill-pill">Docker</div>
+    <div class="skill-pill">GitHub</div>
+    <div class="skill-pill">AI / ML</div>
+    <div class="skill-pill">Data Analysis</div>
+    <div class="skill-pill">REST APIs</div>
+    <div class="skill-pill">Graphic Design</div>
+
+  </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+  <div class="section-tag">
+    Projects
+  </div>
+
+  <h2 class="section-title">
+    Things I've built.
+  </h2>
+
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+
+    <div class="project-card glass">
+
+      <div class="project-number">
+        01
+      </div>
+
+      <div class="project-label">
+        Full Stack · MERN
+      </div>
+
+      <h3 class="project-title">
+        Student Grievance Management System
+      </h3>
+
+      <p class="project-desc">
+        A full-stack grievance management platform where students
+        can submit complaints, track issue status, and manage
+        grievances efficiently using the MERN stack.
+      </p>
+
+      <div class="project-tags">
+
+        <span class="tag tag-green">MongoDB</span>
+        <span class="tag tag-blue">Express.js</span>
+        <span class="tag tag-purple">React.js</span>
+        <span class="tag tag-green">Node.js</span>
+
+      </div>
+
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+
+        <a href="https://student-grievance-frontend-zala.onrender.com"
+           target="_blank"
+           class="project-link">
+
+           Live Demo →
+        </a>
+
+        <a href="https://github.com/itsamitashu/student-grievance-system"
+           target="_blank"
+           class="project-link">
+
+           GitHub →
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- PROJECT 2 -->
+
+    <div class="project-card glass">
+
+      <div class="project-number">
+        02
+      </div>
+
+      <div class="project-label">
+        AI · Data Analysis
+      </div>
+
+      <h3 class="project-title">
+        COVID-19 Prediction
+      </h3>
+
+      <p class="project-desc">
+        A machine learning based COVID-19 prediction and analysis
+        project focused on trend forecasting, data visualization,
+        and predictive insights using real-world datasets.
+      </p>
+
+      <div class="project-tags">
+
+        <span class="tag tag-green">Python</span>
+        <span class="tag tag-purple">Machine Learning</span>
+        <span class="tag tag-blue">Data Analysis</span>
+
+      </div>
+
+      <a href="https://github.com/itsamitashu/02_COVID-19-PREDICTION"
+         target="_blank"
+         class="project-link">
+
+         GitHub →
+      </a>
+
+    </div>
+
+    <!-- PROJECT 3 -->
+
+    <div class="project-card glass">
+
+      <div class="project-number">
+        03
+      </div>
+
+      <div class="project-label">
+        Design · Development
+      </div>
+
+      <h3 class="project-title">
+        Portfolio Website
+      </h3>
+
+      <p class="project-desc">
+        A modern personal portfolio website featuring glassmorphism UI,
+        neon gradients, responsive layout, and smooth animations.
+      </p>
+
+      <div class="project-tags">
+
+        <span class="tag tag-blue">HTML</span>
+        <span class="tag tag-blue">CSS</span>
+        <span class="tag tag-purple">JavaScript</span>
+
+      </div>
+
+      <a href="https://github.com/itsamitashu"
+         target="_blank"
+         class="project-link">
+
+         View Project →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+  <div class="section-tag">
+    Contact
+  </div>
+
+  <h2 class="section-title">
+    Let's build something remarkable.
+  </h2>
+
+  <div class="contact-card glass">
+
+    <p class="contact-text">
+      I'm currently open to internships, collaborations,
+      and open source projects.
+    </p>
+
+    <a href="mailto:kumar.amit.tech2005@gmail.com"
+       class="contact-email">
+
+       kumar.amit.tech2005@gmail.com
+    </a>
+
+    <div class="social-links">
+
+      <a href="https://github.com/itsamitashu"
+         target="_blank"
+         class="social-link">
+
+         GitHub
+      </a>
+
+      <a href="mailto:kumar.amit.tech2005@gmail.com"
+         class="social-link">
+
+         Email
+      </a>
+      <a href="https://www.linkedin.com/in/amit-kumar-525a59328?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+   target="_blank"
+   class="social-link">
+
+   LinkedIn
+</a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  Crafted with precision by Amit Kumar · 2026
+</footer>
+
+</body>
+</html>
